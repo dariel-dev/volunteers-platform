@@ -1,0 +1,173 @@
+﻿@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .selection-box {
+        text-align: center;
+        margin: 20px;
+    }
+
+    .volunteer-section, .provider-section {
+        margin-top: 20px;
+    }
+
+    .camp-gallery {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .camp-card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        width: 250px;
+    }
+
+    .camp-card img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    button {
+        background-color: #5f21db;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background-color: #c9b7ed;
+    }
+</style>
+
+<div class="selection-box">
+    <h1>Welcome</h1>
+    <p>Are you a Volunteer or an Opportunity Provider?</p>
+    <button id="volunteer-btn">Volunteer</button>
+    <button id="provider-btn">Opportunity Provider</button>
+</div>
+
+<div class="volunteer-section hidden">
+    <h2>Volunteer Dashboard</h2>
+    <p>Select a camp to explore and volunteer:</p>
+    <div class="camp-gallery">
+        <div class="camp-card">
+            <img src="https://i0.wp.com/blog.scoutingmagazine.org/wp-content/uploads/sites/2/2022/05/2019_Homestead_OOH_1064-scaled.jpg?fit=2560%2C1709&ssl=1" alt="Camp 1">
+            <h3>Camp 1</h3>
+            <p>A fun and rewarding experience. Help with organizing activities and providing resources.</p>
+            <button class="read-more">Read More</button>
+            <button class="sign-now">Sign Now</button>
+        </div>
+        <div class="camp-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5RtfsFFoCvw_K4MO_7Rg-USLSzip4byoxQ&s" alt="Camp 2">
+            <h3>Camp 2</h3>
+            <p>Join us for a weekend of community outreach, education, and environmental cleanup.</p>
+            <button class="read-more">Read More</button>
+            <button class="sign-now">Sign Now</button>
+        </div>
+        <div class="camp-card">
+            <img src="https://www.flexjobs.com/blog/wp-content/uploads/2020/10/15153848/The-Career-Benefits-of-Volunteering-During-Your-Job-Search-2.jpg?w=1024" alt="Camp 3">
+            <h3>Camp 3</h3>
+            <p>Help build and restore homes for people in need. Make a direct impact on their lives.</p>
+            <button class="read-more">Read More</button>
+            <button class="sign-now">Sign Now</button>
+        </div>
+    </div>
+</div>
+
+<div class="provider-section hidden">
+    <h2>Opportunity Provider Application</h2>
+    <form id="provider-form">
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" required>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="camp">Camp Name:</label>
+        <input type="text" id="camp" name="camp" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="photos">Upload Photos:</label>
+        <input type="file" id="photos" name="photos" accept="image/*" multiple>
+
+        <h3>Additional Information</h3>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="volunteers">How many volunteers do you need?</label>
+        <input type="number" id="volunteers" name="volunteers" required>
+
+        <label for="schedule">Event Schedule:</label>
+        <textarea id="schedule" name="schedule" rows="4" required></textarea>
+
+        <h3>Terms and Conditions</h3>
+        <p class="terms">
+            <input type="checkbox" id="terms" name="terms" required>
+            I agree to the <a href="#">Terms and Conditions</a> of providing opportunities.
+        </p>
+
+        <button type="submit">Submit Application</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("volunteer-btn").addEventListener("click", function() {
+        document.querySelector(".volunteer-section").classList.remove("hidden");
+        document.querySelector(".provider-section").classList.add("hidden");
+    });
+
+    document.getElementById("provider-btn").addEventListener("click", function() {
+        document.querySelector(".provider-section").classList.remove("hidden");
+        document.querySelector(".volunteer-section").classList.add("hidden");
+    });
+
+    document.querySelectorAll(".read-more").forEach((button, index) => {
+        button.addEventListener("click", function () {
+            if (index === 0) {
+                alert("🌟 Camp 1: Immerse yourself in a dynamic environment where teamwork and creativity come together to create meaningful experiences. Volunteers will help design and facilitate engaging activities, ensuring participants feel welcome and supported. You'll be assisting with logistics, setting up interactive stations, and helping coordinate fun learning sessions that leave a lasting impact. Whether you're guiding a group through an exciting challenge or preparing essential resources, your role will be crucial in making this camp a success.\n📅 Date: March 15-17, 2025\n📍 Location: Greenfield Community Center, California");
+            } else if (index === 1) {
+                alert("🌍 Camp 2: This is more than just an environmental cleanup—it's a movement to inspire change. Volunteers will engage with local communities to promote sustainability, lead awareness discussions, and take part in hands-on conservation efforts. You'll spend the weekend working alongside passionate individuals, restoring public spaces, cleaning up natural areas, and supporting initiatives that protect the environment. Expect to get your hands dirty while making a visible difference, all while learning valuable skills in community outreach and environmental stewardship.\n📅 Date: April 5-7, 2025\n📍 Location: Blue River Park, Oregon");
+            } else if (index === 2) {
+                alert("🏡 Camp 3: Step into a life-changing experience where your efforts directly impact families in need. Volunteers will work on home restoration projects, contributing to construction, painting, and landscaping to provide safe, comfortable living spaces. No prior experience is needed—just a willingness to learn and help. You'll collaborate with skilled builders, interact with the families benefiting from your work, and see firsthand how your contributions bring hope and stability. Every brush stroke, nail, and effort will be a step towards a better future for those in need.\n📅 Date: May 10-12, 2025\n📍 Location: Sunrise Housing Project, Texas");
+            }
+        });
+    });
+
+
+    document.querySelectorAll(".sign-now").forEach((button, index) => {
+        button.addEventListener("click", function () {
+            if (index === 0) {
+                alert("✅ You have successfully signed up for the first camp! Get ready for an amazing experience where you'll assist in organizing activities and making a real impact. See you at Greenfield Community Center on March 15-17, 2025!");
+            } else if (index === 1) {
+                alert("✅ You have successfully signed up for the second camp! Your participation will help create a cleaner and more sustainable environment. Pack your gloves and enthusiasm—we'll see you at Blue River Park on April 5-7, 2025!");
+            } else if (index === 2) {
+                alert("✅ You have successfully signed up for the third camp! Get ready to roll up your sleeves and help rebuild homes for families in need. We can't wait to see you at Sunrise Housing Project on May 10-12, 2025!");
+            }
+        });
+    });
+
+
+    document.getElementById("provider-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Your application has been submitted!");
+    });
+</script>

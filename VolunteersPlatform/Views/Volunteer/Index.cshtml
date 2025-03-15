@@ -1,0 +1,46 @@
+﻿@* @{
+    ViewData["Title"] = "Volunteer";
+}
+
+<div class="container">
+    <h2>Volunteer Dashboard</h2>
+    <p>Select a camp to explore and volunteer:</p>
+    <div class="camp-gallery">
+        @foreach (var opportunity in Model)
+        {
+            <div class="camp-card">
+                <img src="@opportunity.Photos" alt="@opportunity.CampName">
+                <h3>@opportunity.CampName</h3>
+                <p>@opportunity.Description</p>
+                <a href="@Url.Action("SignUp", "Volunteer", new { id = opportunity.Id })" class="btn btn-primary">Sign Now</a>
+            </div>
+        }
+    </div>
+</div> *@
+
+
+@model List<VolunteersPlatform.Models.Opportunity>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Volunteer Dashboard";
+}
+
+<div class="volunteer-section">
+    <h2>Volunteer Dashboard</h2>
+    <p>Select a camp to explore and volunteer:</p>
+    <div class="camp-gallery">
+        @foreach (var opportunity in Model)
+        {
+            <div class="camp-card">
+                <img src="https://via.placeholder.com/300" alt="@opportunity.CampName">
+                <h3>@opportunity.CampName</h3>
+                <p>@opportunity.Description</p>
+                <p><strong>Location:</strong> @opportunity.Location</p>
+                <p><strong>Volunteers Needed:</strong> @opportunity.VolunteersNeeded</p>
+                <p><strong>Schedule:</strong> @opportunity.Schedule</p>
+                <a href="@Url.Action("SignUp", "Volunteer", new { id = opportunity.Id })" class="btn btn-primary">Sign Up</a>
+            </div>
+        }
+    </div>
+</div>

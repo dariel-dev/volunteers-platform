@@ -1,0 +1,47 @@
+﻿@model VolunteersPlatform.Models.Opportunity
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Opportunity Provider Application";
+}
+
+<div class="provider-section">
+    <h2>Opportunity Provider Application</h2>
+    <form asp-action="SubmitApplication" method="post">
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="FirstName" required>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="LastName" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="PhoneNumber" required>
+
+        <label for="camp">Camp Name:</label>
+        <input type="text" id="camp" name="CampName" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="Description" rows="4" required></textarea>
+
+        <label for="photos">Upload Photos:</label>
+        <input type="file" id="photos" name="Photos" accept="image/*" multiple>
+
+        <h3>Additional Information</h3>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="Location" required>
+
+        <label for="volunteers">How many volunteers do you need?</label>
+        <input type="number" id="volunteers" name="VolunteersNeeded" required>
+
+        <label for="schedule">Event Schedule:</label>
+        <textarea id="schedule" name="Schedule" rows="4" required></textarea>
+
+        <h3>Terms and Conditions</h3>
+        <p class="terms">
+            <input type="checkbox" id="terms" name="TermsAccepted" required>
+            I agree to the <a href="#">Terms and Conditions</a> of providing opportunities.
+        </p>
+
+        <button type="submit">Submit Application</button>
+    </form>
+</div>
